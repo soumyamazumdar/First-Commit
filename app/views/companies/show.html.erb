@@ -1,0 +1,48 @@
+<div class="container company-show">
+  <div>
+    <div class="pull-left">
+      <h1 id="listing_stock_header">Listing Stocks</h1>
+    </div>
+    <div class="pull-right">
+      <% if current_user.id==17 %>
+        <%= link_to 'Create Stock', new_company_stock_path(@company), class: 'btn btn-primary' %>
+      <% end %> 
+    </div>   
+  </div>
+  <div>
+    <table>
+    	<tr>
+    		<th>Name</th>
+    		<th>Total Stocks</th>
+    		<th>Stocks Available</th>
+    		<th>Price</th>
+    	</tr>
+      <div>
+      	<% @company.stocks.each do |stock| %>
+        	  <tr>
+        	  	<td id="td"><%= stock.name %></td>
+        	  	<td id="td"><%= stock.total_stocks %></td>
+        	  	<td id="td"><%= stock.stocks_available %></td>
+        	  	<td id="td"><%= stock.price %></td>
+              <% if current_user.id==17 %>
+                <td><%= link_to 'Edit', edit_stock_path(stock), class: 'link-to' %></td> 
+        	  	  <td><%= link_to_if stock.total_stocks==stock.stocks_available, 'Delete', stock_path(stock,comp_id: @company) , method: :delete, data: { confirm: 'Are You Sure?' }, class: 'link-to' %></td>
+              <% else %>            
+                <% if stock.stocks_available>=1 %>
+          	  	  <td><%= link_to 'Buy Stock', new_user_transaction_path( user_id: @current_user.id, stock_id: stock.id), class: 'link-to' %></td>
+                <% else %>
+                  <td id="td"><p><i>Stocks Not Available</i></p></td>
+                <% end %>    
+              <% end %>  
+        	  </tr>
+        <% end %>  
+      </div>  
+    </table>
+  </div>  
+
+<div class="back-button">
+  <%= link_to 'Back', companies_path, class: 'btn btn-secondary btn-lg active' %>
+</div>
+
+
+ <!-- /[stock.company, stock]/ -->

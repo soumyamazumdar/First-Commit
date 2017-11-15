@@ -1,0 +1,46 @@
+<div class="container">
+  <div id="signup">
+    <div id="signup_header">
+      <h1>Sign Up</h1>
+    </div>
+    <div id="signup_block">
+      <%= form_for @user do |form| %>
+
+        <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2>
+              <%= pluralize(@user.errors.count, "error")%> prohibited this user from being saved:
+            </h2>
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>     
+
+
+        <p>
+          <%= form.label :Name %>
+          <%= form.text_field :name %>
+        </p>
+          <p>
+          <%= form.label :Email %>
+          <%= form.text_field :email %>
+        </p>
+          <p>
+          <%= form.label :Password %>
+          <%= form.password_field :password %>
+        </p>
+            <p>
+          <%= form.label :Password_confirmation %>
+          <%= form.password_field :password_confirmation %>
+        </p>
+        <p>
+          <%= form.submit %>
+        </p>
+      <% end %>  
+    </div>
+   </div> 
+</div>    
+

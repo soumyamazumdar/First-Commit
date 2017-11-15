@@ -1,0 +1,11 @@
+<h1>sell stock</h1>
+<%= @transaction.id %>
+
+<% @stsell = Transaction.find(@transaction.id).stocks_bought %>
+
+<%= form_for @transaction, :url => stocks_add_to_stock_path(t_id: @transaction), :html => {:method => :post} do |tran| %>
+  <p>  
+    Stocks Available: <%= tran.select :stocks_sold, options_for_select(1..@stsell), { prompt: "select" } %><br />
+  </p>
+  <%= tran.submit 'Sell Stock' %>
+<% end %>   

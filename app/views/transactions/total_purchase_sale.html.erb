@@ -1,0 +1,38 @@
+<h1>total_purchase_sale</h1>
+
+<% @tpur=0 %>
+<% @tsold=0 %>
+<% current_user.transactions.each do |i| %>
+	<% @tpur +=i.total_cost %>
+	<% @tsold += i.sold_total %>
+<% end %>
+
+<div class="container">
+	<div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-6">
+	          <div id="total_purchase">
+	          	<p>Total Purcase: <%= @tpur %></p>	
+	          </div>
+	        </div>
+	        <div class="col-xs-12 col-sm-6">
+	        	<div id="total_sold">
+				  <p>Total Sold: <%= @tsold %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div id="profit">
+					<% if @tsold>@tpur %>
+					  <p>Profit Amount: <%= @tsold-@tpur %></p>
+					<% else %>
+					  <p>Profit Amount: 0 </p>  
+					<% end %>  
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

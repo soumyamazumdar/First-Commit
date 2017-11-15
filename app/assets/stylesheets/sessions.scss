@@ -1,0 +1,38 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#login{
+
+  /*background-image:  url(/assets/round-hall.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-width: 100%;
+  min-height: 100%;*/
+
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: 25%;
+  left: 35%;
+  color: red;
+  font-family: 'Sofia';
+   font-size: 25px;
+}
+
+#login_header{
+	text-align: center;
+}
+
+#login_block{
+	text-align: center;
+}
+
+/*body{
+	background-image:  url(/assets/round-hall.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+  min-width: 100%;
+  min-height: 100%;
+
+}*/

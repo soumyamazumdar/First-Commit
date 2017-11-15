@@ -1,0 +1,32 @@
+
+<h1>transaction index</h1>
+ 
+
+<table>
+	<tr>
+		<th>User Name</th>
+		<th>Company Name</th>
+		<th>Stock Name</th>
+		<th>Stocks Bought</th>
+		<th>Stocks Sold</th>
+	</tr>
+	<% @transactions.each do |t| %>
+	  <% if t.user_id==current_user.id %>
+		  <tr>
+		  	<td><%= @uname = User.find(t.user_id).name %>
+		  	<td><%= @cname = Company.find(t.comp_id).name %></td>
+		  	<td><%= @sname = Stock.find(t.stock_id).name %></td>
+		  	<td><%= t.stocks_bought %>
+		  	<td><%= t.stocks_sold_count %>	
+		  	<td><%= link_to 'Show', transaction_path(t) %></td>
+		  	  <td><%= link_to_if t.stocks_sold_count<t.stocks_bought, 'Sell', edit_transaction_path(t) %></td>
+		  	<td><%= link_to 'Destroy', transaction_path(t), method: :delete, data: { confirm: 'Are you sure'} %></td>
+		  </tr>
+	   <% end %>	
+	<% end %>  
+</table>
+
+<%= link_to 'Back', transactions_view_user_transaction_path %>
+<%#= link_to 'Back', company_path(Stock.find_by_id(@transactions.stock_id).company) %>  
+
+

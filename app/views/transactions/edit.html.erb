@@ -1,0 +1,9 @@
+<h1>Edit transaction</h1>
+
+<% @stsell = @transaction.stocks_bought %>
+<%= form_for @transaction do |tran| %>
+  <p>  
+    Stocks Available: <%= tran.select :stocks_sold, options_for_select(1..@stsell), { prompt: "select" } %><br />
+  </p>
+  <%= tran.submit 'Sell Stock' %>
+<% end %>   

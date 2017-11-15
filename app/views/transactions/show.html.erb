@@ -1,0 +1,17 @@
+<h1>transaction show</h1>
+
+<h1><i>Details Of Stock Bought</i></h1>
+
+<% @price = Stock.find(@transaction.stock_id).price %>
+<p>User Name: <%= @user = User.find(@transaction.user_id).name %></p>
+<p>Company Name: <%= @comp = Company.find(@transaction.comp_id).name %></p>
+<p>Stock Name: <%= @st = Stock.find(@transaction.stock_id).name %></p>
+<p>Stocks Bought: <%= @transaction.stocks_bought %></p>
+<p>Total Cost: <%= @tcost = @transaction.stocks_bought*@price %></p>
+<%#= @transaction.total_cost %>
+<%#= @transaction.Purchasetotal %>
+
+<%= link_to 'List All Stocks Bought', transactions_path(@transaction) %><br />
+<%= link_to 'Home', welcome_index_path %> 
+
+

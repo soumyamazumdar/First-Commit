@@ -1,0 +1,24 @@
+
+ <div class="container">
+   <div id="login"> 
+     <div id="login_header">
+       <h1>Log In:</h1>
+     </div>
+     <div id="login_block">
+      <%= form_tag sessions_path do %>
+        <div class="field">
+          <%= label_tag :email %>
+          <%= text_field_tag :email, params[:email] %>
+        </div>
+        <div class="field">
+          <%= label_tag :password %>
+          <%= password_field_tag :password %>
+        </div>
+        <div class="actions"><%= submit_tag "Log In" %></div>
+      <% end %>
+     </div> 
+   </div>  
+ </div>
+ 
+
+

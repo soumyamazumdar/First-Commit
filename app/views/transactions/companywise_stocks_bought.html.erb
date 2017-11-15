@@ -1,0 +1,36 @@
+<h1>companywise_stocks_bought</h1>
+<h2><i>Stock Bought Of the Listed Companies</i></h2>
+
+
+
+<table>
+  <tr>
+    <th>Company Name</th>
+    <th>Amount Invested</th>
+    <th>Amount Of Stocks Sold</th>
+    <th>Amount Reedemed</th>
+  </tr>
+  <% current_user.transactions.select(:comp_id).distinct.each do |thing| %>
+  <tr>
+  	<% @tpur=0 %>
+    <% @tsold=0 %>
+  	<% @cid = thing.comp_id %>
+  	<% current_user.transactions.each do |i| %>
+      <% if i.comp_id==@cid %>
+	    <% @tpur +=i.total_cost %>
+	    <% @tsold += i.sold_total %>
+	  <% end %>  
+    <% end %>
+  	<td><%= Company.find(@cid).name %>
+    <td><%= @tpur %></td>
+    <td><%= @tsold %></td>
+    <% if @tsold>@tpur %>
+      <td><%= @tsold-@tpur %></td>
+    <% else %>
+      <td><%= 0 %>
+    <% end %>    
+    <td><%= link_to 'Show', stocks_user_specific_stocks_path(c: @cid) %></td>
+  </tr>
+  <% end %>
+</table>   
+

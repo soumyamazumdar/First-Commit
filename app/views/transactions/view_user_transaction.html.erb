@@ -1,0 +1,17 @@
+<div class="container">	
+  <h1>view_user_transaction</h1>
+  <div class="view-user-transaction">
+	  <div class="row"> 
+	    <div class="col-xs-12 col-sm-4">
+	      <%= link_to 'List Transactions', transactions_path(@transaction) %><br />
+	    </div>
+	    <div class="col-xs-12 col-sm-4">  
+	      <%= link_to 'View Companywise Details', transactions_companywise_stocks_bought_path %><br />
+	    </div>
+	    <div class="col-xs-12 col-sm-4">  
+	      <%= link_to 'Total Purchase/Sale', transactions_total_purchase_sale_path %>
+	    </div>  
+	  </div>  
+	  <%= link_to 'Back', welcome_index_path , class: 'btn btn-primary' %>
+  </div> 	  
+</div>  

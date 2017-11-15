@@ -1,0 +1,30 @@
+<div class="container company-index">
+  <div class="pull-left">   
+	<h1>Listing Companies</h1>
+  </div>
+  <div class="pull-right">
+    <% if current_user.id==17 %>
+	  <%= link_to 'Add New Company', new_company_path, class: "btn btn-primary" %>
+	  <%= link_to 'View Users', users_path, class: "btn btn-primary" %>
+	<% end %>  
+  </div>	  	
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Unique Id</th>
+		</tr>
+		<div id="company_list">
+			<% @companies.each do |company| %>
+			  <tr>
+			  	<td id="td"><%= company.name %></td>
+			  	<td id="td"><%= company.unique_id %></td>
+			  	<td><%= link_to 'Show', company_path(company), class:"link-to" %></td>
+			  	<% if current_user.id==17 %>
+			  	  <td><%= link_to 'Edit', edit_company_path(company), class:"link-to" %></td>
+			  	  <td><%= link_to 'Destroy', company_path(company), method: :delete, data: { confirm: 'Are you Sure?'}, class:"link-to" %></td>
+			  	<% end %>  
+			  </tr>
+			<% end %>  
+		</div>	
+	</table>	
+</div	

@@ -1,0 +1,27 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#error_explanation{
+	color: red;
+}
+
+#signup{
+       position: absolute;
+  width: 550px;
+  height: 400px;
+  top: 17%;
+  left: 25%;
+  color: red;
+   font-family: 'Tangerine', serif;
+   font-size: 18px;
+}
+
+#signup_header{
+	text-align: center;
+}
+
+#signup_block{
+	text-align: center;
+}
+

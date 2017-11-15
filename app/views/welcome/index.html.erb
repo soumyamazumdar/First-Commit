@@ -1,0 +1,30 @@
+<h1>Welcome#index</h1>
+
+<div class="container">
+	<div class="welcome-index-container">
+	  <div class="row">
+	    <% if current_user.id==17 %>
+	      <div class="col-sm-6">
+	        <%= link_to companies_path do %>
+ 			  <div id="companies_and_stocks">
+ 			  	<p>Companies and Stocks</p>
+ 			  </div>
+			<% end %>
+	      </div>
+	      <div class="col-sm-6">  
+	        <%= link_to 'Users', { controller: 'users', action: "index" } %>
+	      </div>  
+	    <% else %>
+	      <div class="col-sm-4">
+	        <%= link_to 'Edit Profile', { controller: 'users', action: "edit", id: current_user.id } %>
+	      </div>  
+	      <div class="col-sm-4">
+	        <%= link_to 'View Transaction', { controller: 'transactions', action: "view_user_transaction"} %>
+	      </div>
+	      <div class="col-sm-4">
+	      	<%= link_to 'View Companies', controller: 'companies' %>
+	      </div>	
+	    <% end %>    
+	  </div>
+	</div>    
+</div>	

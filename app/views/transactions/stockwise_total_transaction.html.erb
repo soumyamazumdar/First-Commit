@@ -1,0 +1,40 @@
+<h1>stockwise_total_transaction</h1>
+
+<% @tcost = 0 %>
+<% @stbought=0 %>
+<% @tsold=0 %>
+<% @stsoldcount=0 %>
+<%# @test=0 %>
+
+<% current_user.transactions.each do |i| %>
+	<% if @st.id==i.stock_id %>
+	  <%# @test += i.total_cost %>
+	  <% @tcost = @tcost+(Stock.find(i.stock_id).price*i.stocks_bought) %>
+	  <% @stbought += i.stocks_bought %>
+	  <% @tsold += i.sold_total %>
+	  <% @stsoldcount += i.stocks_sold %>
+	<% end %>
+<% end %>	
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6">
+			<div id="stocks_bought">
+				<p>Stocks Bought: <%= @stbought %></p>
+				<!-- <p>Price per unit: <%= @tcost/@stbought %></p> -->
+				<p>-----------------------------</p>
+				<p> Total Cost: <%= @tcost %>  </p>
+			</div>
+		</div>
+        <div class="col-xs-12 col-sm-6">
+        	<div id="stocks_sold">
+				<p>Stocks Sold: <%= @stsoldcount %></p>
+				<!-- <p>Price per unit: <%#= @tsold/@stsoldcount %></p> -->
+				<p>-----------------------------</p>
+				<p>Total Sold: <%= @tsold %></p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <p> Total Cost: <%#= @test %> </p> -->
+
